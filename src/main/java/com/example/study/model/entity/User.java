@@ -30,7 +30,7 @@ public class User {
 
     private String createdBy;
 
-    private LocalDate updatedAt;
+    private LocalDateTime updatedAt;
 
     private String updatedBy;
 }
