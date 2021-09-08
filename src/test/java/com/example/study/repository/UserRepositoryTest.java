@@ -37,8 +37,16 @@ public class UserRepositoryTest extends StudyApplicationTests {
         user.setEmail(email);
         user.setPhoneNumber(phoneNumber);
         user.setRegisteredAt(registeredAt);
-        user.setCreatedAt(createdAt);
-        user.setCreatedBy(createdBy);
+//        user.setCreatedAt(createdAt);
+//        user.setCreatedBy(createdBy);
+
+        //Builder로 생성자 채움
+        User u = User.builder()
+                .account(account)
+                .password(password)
+                .status(status)
+                .email(email)
+                .build();
 
         User newUser = userRepository.save(user);
 
@@ -50,6 +58,10 @@ public class UserRepositoryTest extends StudyApplicationTests {
     public void read() {
 
         User user = userRepository.findFirstByPhoneNumberOrderByIdDesc("010-1111-2222");
+
+        //Accessors로 chain 패턴 적용
+        user.setEmail("").setPhoneNumber("").setStatus("");
+
         user.getOrderGroupList().stream().forEach(orderGroup -> {
             System.out.println("-----------주문 묶음-------------------");
             System.out.println("수령인: " + orderGroup.getRevName());
