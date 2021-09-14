@@ -66,7 +66,7 @@ public class OrderGroupApiLogicService implements CrudInterface<OrderGroupApiReq
                             .setTotalQuantity(body.getTotalQuantity())
                             .setOrderAt(body.getOrderAt())
                             .setArrivalDate(body.getArrivalDate())
-                            .setUser(userRepository.getOne(body.getId()))
+                            .setUser(userRepository.getOne(body.getUserId()))
                             ;
                     return orderGroup;
                 })
